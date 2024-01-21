@@ -46,4 +46,4 @@ Sorularınız, önerileriniz veya geri bildirimleriniz için lütfen [iletişime
 
 ## Lisans
 
-Bu proje MIT Lisansı altında lisanslanmıştır
+Bu proje MIT Lisansı altında lisanslanmıştır.
