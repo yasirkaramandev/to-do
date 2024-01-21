@@ -1,27 +1,17 @@
 [
     {
-        "title": "aa",
-        "description": "aa",
+        "title": "School",
+        "description": "Go School",
         "time": "20.01.2024 22:42"
     },
     {
-        "title": "aa",
-        "description": "a",
+        "title": "Game",
+        "description": "Play a game",
         "time": "20.01.2024 22:42"
     },
     {
-        "title": "a",
-        "description": "a",
+        "title": "Homework",
+        "description": "Finish homework",
         "time": "20.01.2024 22:42"
-    },
-    {
-        "title": "a",
-        "description": "a",
-        "time": "20.01.2024 22:45"
-    },
-    {
-        "title": "aa",
-        "description": "aa",
-        "time": "20.01.2024 22:45"
     }
 ]

@@ -154,34 +154,37 @@ class Ui_MainWindow(object):
         self.delete_button.setText(_translate("MainWindow", "Delete"))
     def closeDa(self):
         MainWindow.destroy(True,True)
-
+        MainWindow.close()
 
     def addNewItem(self):
-        # Data analyze
-        title=self.title_LineEdit.text()
-        description = self.description_LineEdit.text()
-        date = self.zaman_dateTimeEdit.text()
-        date_th = date.replace(".","/")
-        date_time , date_hour = date_th.split(" ")
+        if self.title_LineEdit.text() != "" or self.description_LineEdit.text() != "":
+            # Data analyze
+            title=self.title_LineEdit.text()
+            description = self.description_LineEdit.text()
+            date = self.zaman_dateTimeEdit.text()
+            date_th = date.replace(".","/")
+            date_time , date_hour = date_th.split(" ")
 
-        # Data Set&Get
+            # Data Set&Get
 
-        with open("Data/data.json", "r", encoding="utf-8") as file:
-                data = json.load(file)
-        new_data = {"title": title, "description": description, "time": date}
-        
-        data.append(new_data)
-        with open("Data/data.json","w",encoding="utf-8") as file:
-             json.dump(data,file,indent=4,ensure_ascii=False) # İndent 4 almamızın sebebi JSON dosyasında daha düzenli şekilde gözükmesini sağlamaktır.
-        
-        # Listeyi Güncelleme 
-        self.todoList()
-        # Kaydedince başa dönme
-             
-        self.title_LineEdit.setText("")
-        self.description_LineEdit.setText("")
-        self.zaman_dateTimeEdit.setDateTime(QtCore.QDateTime.currentDateTime())
+            with open("Data/data.json", "r", encoding="utf-8") as file:
+                    data = json.load(file)
+            new_data = {"title": title, "description": description, "time": date}
 
+            data.append(new_data)
+            with open("Data/data.json","w",encoding="utf-8") as file:
+                 json.dump(data,file,indent=4,ensure_ascii=False) # İndent 4 almamızın sebebi JSON dosyasında daha düzenli şekilde gözükmesini sağlamaktır.
+
+            # Listeyi Güncelleme 
+            self.todoList()
+            # Kaydedince başa dönme
+
+            self.title_LineEdit.setText("")
+            self.description_LineEdit.setText("")
+            self.zaman_dateTimeEdit.setDateTime(QtCore.QDateTime.currentDateTime())
+        else: 
+            QMessageBox = QtWidgets.QMessageBox()
+            QMessageBox.warning(None,"Warning!","Please fill the fields.")
     def todoList(self):
         with open("Data/data.json", "r", encoding="utf-8") as file:
             data = json.load(file)
