@@ -20,6 +20,13 @@ Merhaba! Bu repo, sıfırdan bir To-Do (Yapılacaklar) Uygulaması geliştirmek 
 - Data.json'a verileri yazılması ve çağırılması kodlarını yazdım.
 - Kullanıcı yeni iş ekleyince eski işteki verileri silmeyi ekledim.
 
+## Gün 5: [To-Do Listelemesi Bitti!](https://youtu.be/bMcHulwijCM?feature=shared)
+- Verileri JSON dan çekip listeleyen kodu yazdım.
+- Ufak hataları düzelttim.
+
+## Gün 6: [inputlar boş ise kayıt etmemesini sağlayan bir sistem](https://www.youtube.com/shorts/U2W58dwRHSY)
+- Eğer inputlar boş ise bir uyarı mesajı gönderme kodu.
+
 ## Nasıl Başlarım?
 
 1. Bu repo'yu kendi bilgisayarınıza kopyalayın: `git clone https://github.com/yasirkaramandev/to-do.git`
