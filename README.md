@@ -27,6 +27,9 @@ Merhaba! Bu repo, sıfırdan bir To-Do (Yapılacaklar) Uygulaması geliştirmek 
 ## Gün 6: [inputlar boş ise kayıt etmemesini sağlayan bir sistem](https://www.youtube.com/shorts/U2W58dwRHSY)
 - Eğer inputlar boş ise bir uyarı mesajı gönderme kodu.
 
+## Gün 7: [İşleri tamamlama kısmı aktif!](https://www.youtube.com/watch?v=4bpg4w4qyzo)
+- CheckBox işaretlendiğinde başlığın üstünü çizip rengini kırmızı yapma.
+
 ## Nasıl Başlarım?
 
 1. Bu repo'yu kendi bilgisayarınıza kopyalayın: `git clone https://github.com/yasirkaramandev/to-do.git`
