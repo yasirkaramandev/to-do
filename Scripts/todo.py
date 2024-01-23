@@ -154,7 +154,6 @@ class Ui_MainWindow(object):
         self.delete_button.setText(_translate("MainWindow", "Delete"))
     def closeDa(self):
         MainWindow.destroy(True,True)
-        MainWindow.close()
 
     def addNewItem(self):
         if self.title_LineEdit.text() != "" or self.description_LineEdit.text() != "":
@@ -211,24 +210,24 @@ class Ui_MainWindow(object):
 
             label_title = QtWidgets.QLabel(frame)
             label_title.setGeometry(QtCore.QRect(40, 10, 521, 31))
-            label_title.setStyleSheet("QLabel{\n"
-                                      "color: #000;\n"
-                                      "font-family: Arial;\n"
-                                      "font-size: 22px;\n"
-                                      "font-style: normal;\n"
-                                      "font-weight: 700;\n"
-                                      "line-height: normal;\n"
-                                      "}")
+            label_title.setStyleSheet("""
+                                    QLabel{
+                                      color: #000;
+                                      font-family: Arial;
+                                      font-size: 22px;
+                                      font-style: normal;
+                                      font-weight: 700;
+                                      line-height: normal;
+                                      }
+                                    """)
             label_title.setObjectName("label_4")
-
             title = veri["title"]
             label_title.setText(f"{title}")
-
             checkBox = QtWidgets.QCheckBox(frame)
             checkBox.setGeometry(QtCore.QRect(10, 30, 16, 21))
             checkBox.setText("")
             checkBox.setObjectName("checkBox")
-
+            checkBox.stateChanged.connect(lambda x,labelTitle = label_title , check_box = checkBox: self.dataControl(labelTitle,check_box))
             label_desc = QtWidgets.QLabel(frame)
             label_desc.setGeometry(QtCore.QRect(40, 40, 491, 31))
             label_desc.setStyleSheet("QLabel{\n"
@@ -240,10 +239,8 @@ class Ui_MainWindow(object):
                                      "line-height: normal;\n"
                                      "}")
             label_desc.setObjectName("label_5")
-
             description = veri["description"]
             label_desc.setText(f"{description}")
-
             pushButton_3 = QtWidgets.QPushButton(frame)
             pushButton_3.setGeometry(QtCore.QRect(540, 30, 71, 41))
             pushButton_3.setStyleSheet("QPushButton{\n"
@@ -255,9 +252,32 @@ class Ui_MainWindow(object):
                                        "}")
             pushButton_3.setObjectName("pushButton_3")
             pushButton_3.setText("More")
-
             self.verticalLayout.addWidget(frame)
-
+    def dataControl(self,labelTitle,check_box):
+        if check_box.isChecked():
+            labelTitle.setStyleSheet("""
+                                    QLabel{
+                                      color: red;
+                                      font-family: Arial;
+                                      font-size: 22px;
+                                      font-style: normal;
+                                      font-weight: 700;
+                                      line-height: normal;
+                                      text-decoration: line-through;
+                                      }
+                                    """)
+        else: 
+            labelTitle.setStyleSheet("""
+                                    QLabel{
+                                      color: #000;
+                                      font-family: Arial;
+                                      font-size: 22px;
+                                      font-style: normal;
+                                      font-weight: 700;
+                                      line-height: normal;
+                                      text-decoration: line-through;
+                                      }
+                                    """)
 
 if __name__ == "__main__":
     import sys
@@ -267,3 +287,4 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
+    #text-decoration: line-through;
