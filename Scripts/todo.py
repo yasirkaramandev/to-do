@@ -152,6 +152,7 @@ class Ui_MainWindow(object):
         self.label_3.setText(_translate("MainWindow", "Date"))
         self.add_button.setText(_translate("MainWindow", "Add"))
         self.delete_button.setText(_translate("MainWindow", "Delete"))
+        self.delete_button.clicked.connect(self.deleteSelected)
     def closeDa(self):
         MainWindow.destroy(True,True)
 
@@ -278,7 +279,24 @@ class Ui_MainWindow(object):
                                       text-decoration: line-through;
                                       }
                                     """)
+    def deleteSelected(self):
+        delete_indexes = []
 
+        for i in range(self.verticalLayout.count()):
+            frame = self.verticalLayout.itemAt(i).widget()
+            checkbox = frame.findChild(QtWidgets.QCheckBox,"checkBox")
+            if checkbox.isChecked():
+                delete_indexes.append(i)
+
+        with open("Data/data.json","r",encoding="utf-8") as file:
+            data = json.load(file)
+
+        for index in reversed(delete_indexes):
+            del data[index]
+        
+        with open("Data/data.json","w",encoding="utf-8") as file:
+            json.dump(data,file,ensure_ascii=False,indent=4)
+        self.todoList()
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
