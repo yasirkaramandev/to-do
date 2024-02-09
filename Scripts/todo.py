@@ -504,12 +504,10 @@ background-image: url();
         pushButton_2.setText("Delete")
         pushButton_2.clicked.connect(lambda _, titleA=data["id"]:self.deleteItem(titleA))
         pushButton_2.clicked.connect(Dialog.accept)
-        pushButton.clicked.connect(lambda x, _id=data["id"], title=self.lineEdit.text(), description=self.lineEdit_2.text(): self.saveData(_id, title, description))
+        pushButton.clicked.connect(lambda x, _id=data["id"]: self.saveData(_id))
         Dialog.exec_()
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-    def deneme(self,veri):
-        print(veri)
     def deleteItem(self, title):
         with open("Data/data.json", "r", encoding="utf-8") as file:
             data = json.load(file)
@@ -523,22 +521,26 @@ background-image: url();
                 json.dump(data, file, indent=2)
 
             self.todoList()
-    def saveData(self, _id, new_title, new_description):
-        with open("Data/data.json", "r", encoding="utf-8") as file:
-            data = json.load(file)
-        
-        new_title = self.lineEdit.text()
-        new_description = self.lineEdit_2.text()
-        index = 0
-        for item in data:
-            if item["id"] == _id:
-                item["title"] = new_title
-                item["description"] = new_description
-                with open("Data/data.json", "w", encoding="utf-8") as file:
-                    json.dump(data, file, indent=4)
-                break
-            index += 1
-        self.todoList()
+    def saveData(self, _id):
+        if self.lineEdit.text() != "" or self.lineEdit_2.text() != "":
+            with open("Data/data.json", "r", encoding="utf-8") as file:
+                data = json.load(file)
+
+            new_title = self.lineEdit.text()
+            new_description = self.lineEdit_2.text()
+            index = 0
+            for item in data:
+                if item["id"] == _id:
+                    item["title"] = new_title
+                    item["description"] = new_description
+                    with open("Data/data.json", "w", encoding="utf-8") as file:
+                        json.dump(data, file, indent=4,ensure_ascii=False)
+                    break
+                index += 1
+            self.todoList()
+        else: 
+            QMessageBox = QtWidgets.QMessageBox()
+            QMessageBox.warning(None,"Warning!","Please fill the fields.")
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
