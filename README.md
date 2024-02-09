@@ -33,6 +33,9 @@ Merhaba! Bu repo, sıfırdan bir To-Do (Yapılacaklar) Uygulaması geliştirmek 
 ## Gün 8: [Silme fonksiyonu](https://www.youtube.com/watch?v=oM0IP4iS1Y0)
 - Sil butonuna tıklandığında seçili işleri silen bir fonksiyon.
 
+## Final : [Bütün işlemler bitti!]()
+- Bütün özellikler tam anlamıyla bitti!
+  
 ## Nasıl Başlarım?
 
 1. Bu repo'yu kendi bilgisayarınıza kopyalayın: `git clone https://github.com/yasirkaramandev/to-do.git`
